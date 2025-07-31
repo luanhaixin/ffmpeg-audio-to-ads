@@ -6,9 +6,9 @@
     <title>ffmpeg.wasm - 截取音频并添加静音示例</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        #processBtn {
+        .button-btn {
             background: linear-gradient(90deg, #4a90e2, #357ABD);
             border: none;
             color: white;
@@ -20,13 +20,13 @@
             box-shadow: 0 4px 8px rgba(53, 122, 189, 0.4);
         }
 
-        #processBtn:disabled {
+        .button-btn:disabled {
             background: #cccccc;
             cursor: not-allowed;
             box-shadow: none;
         }
 
-        #processBtn:hover:not(:disabled) {
+        .button-btn:hover:not(:disabled) {
             background: linear-gradient(90deg, #357ABD, #2a5d90);
             box-shadow: 0 6px 12px rgba(41, 93, 144, 0.6);
         }
@@ -59,7 +59,7 @@
         /* 显示已选文件名 */
         #fileName {
             margin-left: 12px;
-            font-size: 14px;
+            font-size: 11px;
             color: #555;
             vertical-align: middle;
             max-width: 300px;
@@ -74,9 +74,10 @@
         #rangeSlider,
         #silenceStartSlider,
         #silenceEndSlider {
-            margin: 40px 30px;
+            margin: 50px 30px 30px 30px;
             height: 8px;
-            width: 500px;
+            width: calc(100% - 50px);
+            left: -5px;
         }
 
         .noUi-target {
@@ -92,12 +93,12 @@
         }
 
         .noUi-handle {
-            width: 16px !important;
-            height: 16px !important;
+            width: 25px !important;
+            height: 25px !important;
             background: white;
             border: 2px solid #409eff;
             border-radius: 100%;
-            top: -5px;
+            top: -13px !important;
             right: -10px !important;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
             cursor: pointer;
@@ -116,20 +117,22 @@
             color: #fff;
             border-radius: 3px;
             padding: 2px 6px;
-            font-size: 12px;
+            font-size: 15px;
         }
 
 
 
         /* 包裹 audio 的容器 */
         .audio-wrapper {
+            margin: 0 auto;
             margin-top: 20px;
-            padding: 15px 50px;
             background-color: #f9fafb;
             border: 1px solid #e5e7eb;
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
             max-width: 400px;
+            width: calc(100% - 50px);
+            height: fit-content;
         }
 
         /* audio 本体也可以微调 */
@@ -139,10 +142,11 @@
             border-radius: 8px;
         }
     </style>
-<script defer src="bundle.js"></script><script defer src="bundle.js"></script></head>
+    <script defer src="bundle.js"></script>
+
 
 <body>
-    <h2>上传视频/音频，截取音频片段并添加静音</h2>
+    <h3>上传视频/音频，截取音频片段添加静音占位</h3>
     <p id="message">等待上传...</p>
     <label id="uploadLabel" for="uploader">选择文件</label>
     <input type="file" id="uploader" accept="audio/*,video/*" />
@@ -167,12 +171,17 @@
         <div id="silenceEndSlider" class="custom-slider"></div>
     </div>
 
-    <button id="processBtn" disabled>开始处理</button>
+    <button class="button-btn" id="processBtn" disabled>开始生成</button>
+    <button class="button-btn" id="downloadBtn" disabled>下载音频</button>
 
     <div class="audio-wrapper" style="display:none;" id="audioContainer">
         <audio id="output-audio" controls></audio>
     </div>
 
+
+
+
 </body>
+
 
 </html>
