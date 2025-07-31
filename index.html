@@ -93,8 +93,8 @@
         }
 
         .noUi-handle {
-            width: 25px !important;
-            height: 25px !important;
+            width: 22px !important;
+            height: 22px !important;
             background: white;
             border: 2px solid #409eff;
             border-radius: 100%;
@@ -117,10 +117,19 @@
             color: #fff;
             border-radius: 3px;
             padding: 2px 6px;
-            font-size: 15px;
+            font-size: 13px;
         }
 
+        .btn-c {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .btn-c button {
+            margin: 0px 10px;
+        }
 
         /* 包裹 audio 的容器 */
         .audio-wrapper {
@@ -131,7 +140,7 @@
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
             max-width: 400px;
-            width: calc(100% - 50px);
+            width: calc(100% - 20px);
             height: fit-content;
         }
 
@@ -148,10 +157,12 @@
 <body>
     <h3>上传视频/音频，截取音频片段添加静音占位</h3>
     <p id="message">等待上传...</p>
-    <label id="uploadLabel" for="uploader">选择文件</label>
-    <input type="file" id="uploader" accept="audio/*,video/*" />
-    <span id="fileName">未选择文件</span>
 
+    <div class="btn-c">
+        <label id="uploadLabel" for="uploader">选择文件</label>
+        <input type="file" id="uploader" accept="audio/*,video/*" />
+        <span id="fileName">未选择文件</span>
+    </div>
 
 
     <div style="margin-top: 20px;">
@@ -171,8 +182,10 @@
         <div id="silenceEndSlider" class="custom-slider"></div>
     </div>
 
-    <button class="button-btn" id="processBtn" disabled>开始生成</button>
-    <button class="button-btn" id="downloadBtn" disabled>下载音频</button>
+    <div class="btn-c">
+        <button class="button-btn" id="processBtn" disabled>开始生成</button>
+        <button class="button-btn" id="downloadBtn" disabled>下载音频</button>
+    </div>
 
     <div class="audio-wrapper" style="display:none;" id="audioContainer">
         <audio id="output-audio" controls></audio>
