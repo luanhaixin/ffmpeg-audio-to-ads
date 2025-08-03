@@ -6,16 +6,18 @@
     "dev": "webpack-dev-server",
     "build": "webpack"
   },
+  "homepage": "https://github.com/luanhaixin/ffmpeg-audio-to-ads",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg/ffmpeg": "^0.12.15",
-    "@ffmpeg/util": "^0.12.2",
-    "html-webpack-plugin": "^5.6.3",
-    "webpack": "^5.101.0",
-    "webpack-cli": "^6.0.1"
+    "@ffmpeg/util": "^0.12.2"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "html-webpack-plugin": "^5.6.3",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   }
 }
